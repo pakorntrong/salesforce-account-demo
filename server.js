@@ -26,10 +26,7 @@ async function ensureConnection() {
   await conn.login(SF_USERNAME, SF_PASSWORD + SF_TOKEN);
   return conn;
 }
-app.get('*', (req, res) => {
-  console.log('Request path:', req.path);
-  res.status(404).send(`Path not found: ${req.path}`);
-});
+
 
 app.get('/', async (req, res) => {
   res.send(`
@@ -236,7 +233,10 @@ app.get('/sf/customers', async (_req, res) => {
     res.status(500).json({ error: 'SF query', detail: e.message });
   }
 });
-
+app.get('*', (req, res) => {
+  console.log('Request path:', req.path);
+  res.status(404).send(`Path not found: ${req.path}`);
+});
 app.listen(PORT, () => {
   console.log(`👉 Listening on http://localhost:${PORT}`);
 });
