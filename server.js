@@ -237,14 +237,12 @@ app.get('/sf/customers', async (_req, res) => {
     res.status(500).json({ error: 'SF query', detail: e.message });
   }
 });
-<<<<<<< HEAD
+
 app.get('*', (req, res) => {
   console.log('Request path:', req.path);
   res.status(404).send(`Path not found: ${req.path}`);
 });
-=======
 
->>>>>>> 18e68a7d1584d250b3bdc365f9fc4d3209534608
 app.listen(PORT, () => {
   console.log(`👉 Listening on http://localhost:${PORT}`);
 });
